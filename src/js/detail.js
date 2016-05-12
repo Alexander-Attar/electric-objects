@@ -7,6 +7,7 @@
  */
 
 
+// utility to get params from url
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -25,7 +26,7 @@ var ARTWORK_URL = 'https://electric-objects-web-production-attachments.imgix.net
 var ImageDetail = React.createClass({
   render: function() {
     return (
-        <img className={"img-fluid detail m-b-2"} src={ARTWORK_URL} />
+      <img className={"img-fluid detail m-b-2"} src={ARTWORK_URL} />
     );
   }
 });
@@ -34,8 +35,8 @@ var Recommended = React.createClass({
   render: function() {
     var recNodes = this.props.recs.map(function(rec) {
       return (
-          <img className={"center-block img-fluid col-md-2 col-xs-12 card"}
-               src={rec.static_previews[4].url} key={rec.id} />
+        <img className={"center-block img-fluid col-md-2 col-xs-12 card"}
+             src={rec.static_previews[4].url} key={rec.id} />
       );
     });
 
@@ -89,7 +90,6 @@ var ImageBox = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-
     var getRecs = $.jsonp({
       url: 'https://open-api.electricobjects.com/v4/artworks/'+ARTWORK_ID+'/recommended/?limit=18',
       success: function(data) {
